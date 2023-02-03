@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     let ul = document.createElement('ul');
-    body.appendChild('ul');
+    document.body.appendChild(ul);
 
     let liCount = 0;
 
@@ -94,9 +94,19 @@ document.addEventListener('DOMContentLoaded', function() {
         let liText = document.createTextNode('This is list item ' + liCount);
         li.appendChild(liText);
         ul.appendChild(li);
+
+        // Listens for li to be clicked then runs
+        li.addEventListener("click", function() {
+            let myRandomColor = getRandomColor();
+            li.style.color = myRandomColor;
+        });
+
+        // Listens for li to be dbl clicked then runs
+        li.addEventListener('dblclick', function() {
+            this.remove();
+        });
     };
 
     let btn = document.getElementsByClassName('btn');
     btn[0].addEventListener('click', addToList);
-        console.log('Here');
 });
